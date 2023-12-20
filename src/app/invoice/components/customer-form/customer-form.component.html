@@ -1,6 +1,4 @@
-<!-- <app-customer-list></app-customer-list> -->
-
-<div class="modal" id="customerInfoModal">
+<!-- <div class="modal" id="customerInfoModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,51 +15,55 @@
 <div class="container justify-content-center mb-5 p-0" id="customerListContainer">
     <h2>Customer list</h2>
     <ul class="list-group" id="customerList"></ul>
-</div>
+</div> -->
 
 <div class="container justify-content-center mb-5 p-0">
     <h2>Customer form</h2>
-    <form id="customerForm">
+    <form id="customerForm" (ngSubmit)="onSubmit()">
         <div class="container p-0">
             <div class="row align-items-end">
                 <div class="col mb-3">
                     <label for="companyName" class="form-label">Company name</label>
-                    <input type="text" class="form-control" name="companyName" id="companyName" required>
+                    <input type="text" class="form-control" name="companyName" id="companyName"
+                        [(ngModel)]="customer.companyName" required>
                 </div>
                 <div class="col mb-3">
                     <label for="nip" class="form-label">NIP</label>
-                    <input type="text" pattern="[0-9]{0,}" class="form-control" name="nip" id="nip" required>
+                    <input type="text" pattern="[0-9]{0,}" class="form-control" name="nip" id="nip"
+                        [(ngModel)]="customer.nip" required>
                 </div>
             </div>
             <div class="row align-items-end">
                 <div class="col mb-3">
                     <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" name="city" id="city" required>
+                    <input type="text" class="form-control" name="city" id="city" [(ngModel)]="customer.city" required>
                 </div>
                 <div class="col mb-3">
                     <label for="street" class="form-label">Street</label>
-                    <input type="text" class="form-control" name="street" id="street" required>
+                    <input type="text" class="form-control" name="street" id="street" [(ngModel)]="customer.street"
+                        required>
                 </div>
             </div>
             <div class="row align-items-end">
                 <div class="col mb-3">
                     <label for="streetNumber" class="form-label">Street number</label>
                     <input type="text" pattern="[0-9]{0,}" class="form-control" name="streetNumber" id="streetNumber"
-                        required>
+                        [(ngModel)]="customer.streetNumber" required>
                 </div>
                 <div class="col mb-3">
                     <label for="apartmentNumber" class="form-label">Apartment number</label>
                     <input type="text" pattern="[0-9]{0,}" class="form-control" name="apartmentNumber"
-                        id="apartmentNumber">
+                        id="apartmentNumber" [(ngModel)]="customer.apartmentNumber">
                 </div>
                 <div class="col mb-3">
                     <label for="zipCode" class="form-label">Zip code</label>
-                    <input type="text" pattern="[0-9]{5}" class="form-control" name="zipCode" id="zipCode" required>
+                    <input type="text" pattern="[0-9]{5}" class="form-control" name="zipCode" id="zipCode"
+                        [(ngModel)]="customer.zipCode" required>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="industry" class="form-label">Industry</label>
-                <select name="industry" class="form-control" id="industry" required>
+                <select name="industry" class="form-control" id="industry" [(ngModel)]="customer.industry" required>
                     <option value="0">Information Technology</option>
                     <option value="1">Rockstarring</option>
                     <option value="2">Health</option>
@@ -69,16 +71,17 @@
             </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment</label>
-                <textarea type="text" maxlength="500" class="form-control" name="comment" id="comment"></textarea>
+                <textarea type="text" maxlength="500" class="form-control" name="comment" id="comment"
+                    [(ngModel)]="customer.comment"></textarea>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" name="active" id="active">
+                <input type="checkbox" class="form-check-input" name="active" id="active" [(ngModel)]="customer.active">
                 <label class="form-check-label" for="active">Active</label>
             </div>
 
             <div class="d-flex gap-5">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-primary" id="fillFormButton">Auto fill form</button>
+                <button type="button" class="btn btn-primary" (click)="AutoFillForm()">Auto fill form</button>
             </div>
         </div>
     </form>
