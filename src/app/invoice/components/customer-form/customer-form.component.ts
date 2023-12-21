@@ -21,16 +21,13 @@ export class CustomerFormComponent {
   ) { }
 
   onSubmit() {
-    console.log(this.customer);
-
     let result = this.customerService.addCustomer(this.customer);
-    console.log(result);
 
     this.router.navigate(['/invoice/customer/list']);
   }
 
   AutoFillForm(customer: Customer = new Customer("CoolCompany", "131314", "Krakał", "Wiślana",
     "154", "3", "12345", "This is a real cool company.", "1", true)) {
-      
+    Object.assign(this.customer, customer);
   }
 }
