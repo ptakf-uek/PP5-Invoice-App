@@ -13,8 +13,19 @@ export class CustomerListComponent {
 
   constructor(
     private customerService: CustomerService
-  ) {
+  ) { }
+
+  ngOnInit() {
     this.customerList = this.customerService.getCustomerList();
     console.log(this.customerList);
+  }
+
+  ngOnDestroy() {
+    console.log("Zamykam komponent...");
+  }
+
+  onDeletedCustomer(customer: Customer) {
+    this.customerService.deleteCustomer(customer);
+    this.customerList = this.customerService.getCustomerList();
   }
 }

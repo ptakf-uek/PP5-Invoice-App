@@ -7,6 +7,8 @@ import { Customer } from '../models/customer';
 export class CustomerService {
   customerList: Customer[] = [];
 
+  constructor() { }
+
   addCustomer(customer: Customer): void {
     this.customerList.push(customer);
   }
@@ -15,5 +17,7 @@ export class CustomerService {
     return this.customerList;
   }
 
-  constructor() { }
+  deleteCustomer(deletedCustomer: Customer): void {
+    this.customerList = this.customerList.filter((customer: Customer) => { return customer.nip !== deletedCustomer.nip });
+  }
 }
