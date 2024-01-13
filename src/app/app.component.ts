@@ -12,4 +12,6 @@ import { InvoiceModule } from './invoice/invoice.module';
   styleUrl: './app.component.scss'
 })
 
-export class AppComponent { }
+export class AppComponent {
+  title = 'my-app';
+}
