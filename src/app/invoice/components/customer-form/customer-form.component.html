@@ -1,116 +1,230 @@
 <div class="container justify-content-center mb-5 p-0">
-    <h2>Customer form</h2>
-    <form #customerForm="ngForm" id="customerForm" (ngSubmit)="onSubmit(customerForm)">
-        <div class="container p-0">
-
-            <div class="row align-items-end">
-
-                <div class="col mb-5">
-                    <label for="companyName" class="form-label">Company name</label>
-                    <input #companyName="ngModel" type="text" class="form-control" name="companyName" id="companyName"
-                        [(ngModel)]="customer.companyName" required>
-                    <div class="z-999 position-absolute z-999 position-absolute p-1 bg-danger rounded text-light"
-                        *ngIf="companyName.invalid && (companyName.dirty || companyName.touched)">
-                        <div *ngIf="companyName.errors?.['required']">Pole nie może być puste!</div>
-                    </div>
-                </div>
-
-                <div class="col mb-5">
-                    <label for="nip" class="form-label">NIP</label>
-                    <input #nip="ngModel" type="text" pattern="[0-9]{10}" class="form-control" name="nip" id="nip"
-                        [(ngModel)]="customer.nip" required>
-                    <div class="z-999 position-absolute p-1 bg-danger rounded text-light" *ngIf="nip.invalid && (nip.dirty || nip.touched)">
-                        <div *ngIf="nip.errors?.['required']">Pole nie może być puste!</div>
-                        <div *ngIf="nip.errors?.['pattern']">NIP musi składać się z 10 cyfr!</div>
-                    </div>
-                </div>
-
+  <h2>Customer form</h2>
+  <form
+    #customerForm="ngForm"
+    id="customerForm"
+    (ngSubmit)="onSubmit(customerForm)"
+  >
+    <div class="container p-0">
+      <div class="row align-items-end">
+        <div class="col mb-5">
+          <label for="companyName" class="form-label">Company name</label>
+          <input
+            #companyName="ngModel"
+            type="text"
+            class="form-control"
+            name="companyName"
+            id="companyName"
+            [(ngModel)]="customer.companyName"
+            required
+          />
+          <div
+            class="z-999 position-absolute z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="
+              companyName.invalid && (companyName.dirty || companyName.touched)
+            "
+          >
+            <div *ngIf="companyName.errors?.['required']">
+              Pole nie może być puste!
             </div>
-
-            <div class="row align-items-end">
-
-                <div class="col mb-5">
-                    <label for="city" class="form-label">City</label>
-                    <input #city="ngModel" type="text" class="form-control" name="city" id="city"
-                        [(ngModel)]="customer.city" required>
-                    <div class="z-999 position-absolute p-1 bg-danger rounded text-light" *ngIf="city.invalid && (city.dirty || city.touched)">
-                        <div *ngIf="city.errors?.['required']">Pole nie może być puste!</div>
-                    </div>
-                </div>
-
-                <div class="col mb-5">
-                    <label for="street" class="form-label">Street</label>
-                    <input #street="ngModel" type="text" class="form-control" name="street" id="street"
-                        [(ngModel)]="customer.street" required>
-                    <div class="z-999 position-absolute p-1 bg-danger rounded text-light"
-                        *ngIf="street.invalid && (street.dirty || street.touched)">
-                        <div *ngIf="street.errors?.['required']">Pole nie może być puste!</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row align-items-end">
-
-                <div class="col mb-5">
-                    <label for="streetNumber" class="form-label">Street number</label>
-                    <input #streetNumber="ngModel" type="text" class="form-control" name="streetNumber"
-                        id="streetNumber" [(ngModel)]="customer.streetNumber" required>
-                    <div class="z-999 position-absolute p-1 bg-danger rounded text-light"
-                        *ngIf="streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)">
-                        <div *ngIf="streetNumber.errors?.['required']">Pole nie może być puste!</div>
-                    </div>
-                </div>
-
-                <div class="col mb-5">
-                    <label for="apartmentNumber" class="form-label">Apartment number</label>
-                    <input #apartmentNumber="ngModel" type="text" class="form-control" name="apartmentNumber"
-                        id="apartmentNumber" [(ngModel)]="customer.apartmentNumber">
-                </div>
-
-                <div class="col mb-5">
-                    <label for="zipCode" class="form-label">Zip code</label>
-                    <input #zipCode="ngModel" type="text" pattern="[0-9]{5}" class="form-control" name="zipCode"
-                        id="zipCode" [(ngModel)]="customer.zipCode" required>
-                    <div class="z-999 position-absolute p-1 bg-danger rounded text-light"
-                        *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
-                        <div *ngIf="zipCode.errors?.['required']">Pole nie może być puste!</div>
-                        <div *ngIf="zipCode.errors?.['pattern']">Numer musi składać się z 5 cyfr!</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <label for="industry" class="form-label">Industry</label>
-                <select #industry="ngModel" name="industry" class="form-control" id="industry"
-                    [(ngModel)]="customer.industry" required>
-                    <option selected disabled value="undefined">Select an industry...</option>
-                    <option value="1">Information Technology</option>
-                    <option value="2">Rockstarring</option>
-                    <option value="3">Health</option>
-                </select>
-                <div class="z-999 position-absolute p-1 bg-danger rounded text-light"
-                    *ngIf="industry.invalid && (industry.dirty || industry.touched)">
-                    <div *ngIf="industry.errors?.['required']">Pole nie może być puste!</div>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <label for="comment" class="form-label">Comment</label>
-                <textarea type="text" maxlength="500" class="form-control" name="comment" id="comment"
-                    [(ngModel)]="customer.comment"></textarea>
-            </div>
-
-            <div class="mb-5 form-check">
-                <input type="checkbox" class="form-check-input" name="active" id="active" [(ngModel)]="customer.active">
-                <label class="form-check-label" for="active">Active</label>
-            </div>
-
-            <div class="d-flex gap-5">
-                <button [disabled]="customerForm.invalid" type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-primary" (click)="autofillForm()">Auto fill form</button>
-            </div>
-
+          </div>
         </div>
-    </form>
+
+        <div class="col mb-5">
+          <label for="nip" class="form-label">NIP</label>
+          <input
+            #nip="ngModel"
+            type="text"
+            pattern="[0-9]{10}"
+            class="form-control"
+            name="nip"
+            id="nip"
+            [(ngModel)]="customer.nip"
+            required
+          />
+          <div
+            class="z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="nip.invalid && (nip.dirty || nip.touched)"
+          >
+            <div *ngIf="nip.errors?.['required']">Pole nie może być puste!</div>
+            <div *ngIf="nip.errors?.['pattern']">
+              NIP musi składać się z 10 cyfr!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-end">
+        <div class="col mb-5">
+          <label for="city" class="form-label">City</label>
+          <input
+            #city="ngModel"
+            type="text"
+            class="form-control"
+            name="city"
+            id="city"
+            [(ngModel)]="customer.city"
+            required
+          />
+          <div
+            class="z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="city.invalid && (city.dirty || city.touched)"
+          >
+            <div *ngIf="city.errors?.['required']">
+              Pole nie może być puste!
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-5">
+          <label for="street" class="form-label">Street</label>
+          <input
+            #street="ngModel"
+            type="text"
+            class="form-control"
+            name="street"
+            id="street"
+            [(ngModel)]="customer.street"
+            required
+          />
+          <div
+            class="z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="street.invalid && (street.dirty || street.touched)"
+          >
+            <div *ngIf="street.errors?.['required']">
+              Pole nie może być puste!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-end">
+        <div class="col mb-5">
+          <label for="streetNumber" class="form-label">Street number</label>
+          <input
+            #streetNumber="ngModel"
+            type="text"
+            class="form-control"
+            name="streetNumber"
+            id="streetNumber"
+            [(ngModel)]="customer.streetNumber"
+            required
+          />
+          <div
+            class="z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="
+              streetNumber.invalid &&
+              (streetNumber.dirty || streetNumber.touched)
+            "
+          >
+            <div *ngIf="streetNumber.errors?.['required']">
+              Pole nie może być puste!
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-5">
+          <label for="apartmentNumber" class="form-label"
+            >Apartment number</label
+          >
+          <input
+            #apartmentNumber="ngModel"
+            type="text"
+            class="form-control"
+            name="apartmentNumber"
+            id="apartmentNumber"
+            [(ngModel)]="customer.apartmentNumber"
+          />
+        </div>
+
+        <div class="col mb-5">
+          <label for="zipCode" class="form-label">Zip code</label>
+          <input
+            #zipCode="ngModel"
+            type="text"
+            pattern="[0-9]{5}"
+            class="form-control"
+            name="zipCode"
+            id="zipCode"
+            [(ngModel)]="customer.zipCode"
+            required
+          />
+          <div
+            class="z-999 position-absolute p-1 bg-danger rounded text-light"
+            *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)"
+          >
+            <div *ngIf="zipCode.errors?.['required']">
+              Pole nie może być puste!
+            </div>
+            <div *ngIf="zipCode.errors?.['pattern']">
+              Numer musi składać się z 5 cyfr!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <label for="industry" class="form-label">Industry</label>
+        <select
+          #industry="ngModel"
+          name="industry"
+          class="form-control"
+          id="industry"
+          [(ngModel)]="customer.industry"
+          required
+        >
+          <option selected disabled value="undefined">
+            Select an industry...
+          </option>
+          <option value="1">Information Technology</option>
+          <option value="2">Rockstarring</option>
+          <option value="3">Health</option>
+        </select>
+        <div
+          class="z-999 position-absolute p-1 bg-danger rounded text-light"
+          *ngIf="industry.invalid && (industry.dirty || industry.touched)"
+        >
+          <div *ngIf="industry.errors?.['required']">
+            Pole nie może być puste!
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea
+          type="text"
+          maxlength="500"
+          class="form-control"
+          name="comment"
+          id="comment"
+          [(ngModel)]="customer.comment"
+        ></textarea>
+      </div>
+
+      <div class="mb-5 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="active"
+          id="active"
+          [(ngModel)]="customer.active"
+        />
+        <label class="form-check-label" for="active">Active</label>
+      </div>
+
+      <div class="d-flex gap-5">
+        <button
+          [disabled]="customerForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+        <button type="button" class="btn btn-primary" (click)="autofillForm()">
+          Auto fill form
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

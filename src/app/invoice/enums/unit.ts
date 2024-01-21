@@ -1,5 +1,5 @@
 export enum Unit {
-    g = "gram",
-    kg = "kilogram",
-    t = "ton",
+  g = 'gram',
+  kg = 'kilogram',
+  t = 'ton',
 }

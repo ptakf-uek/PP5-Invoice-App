@@ -1,8 +1,22 @@
-<li class="list-group-item d-flex justify-content-between align-items-center" [ngStyle]="!customer.active ? {'color': 'red'} : {}">
-    <div>{{customer.getCompanyName()}}<span class="fst-italic" style="color:gray;"> ({{customer.getNip()}})</span></div>
-    <div>
-        <!-- <button type="button" class="btn btn-primary" onclick="loadCustomer('${nip}')">Load</button> -->
-        <!-- <button type="button" class="btn btn-secondary" onclick="displayCustomer('${nip}')">Display</button> -->
-        <button type="button" class="btn btn-warning" (click)="onDeletedCustomer(customer)">Remove</button>
-    </div>
+<li
+  class="list-group-item d-flex justify-content-between align-items-center"
+  [ngStyle]="!customer.active ? { color: 'red' } : {}"
+>
+  <div>
+    {{ customer.getCompanyName()
+    }}<span class="fst-italic" style="color: gray">
+      ({{ customer.getNip() }})</span
+    >
+  </div>
+  <div>
+    <!-- <button type="button" class="btn btn-primary" onclick="loadCustomer('${nip}')">Load</button> -->
+    <!-- <button type="button" class="btn btn-secondary" onclick="displayCustomer('${nip}')">Display</button> -->
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="onDeletedCustomer(customer)"
+    >
+      Remove
+    </button>
+  </div>
 </li>

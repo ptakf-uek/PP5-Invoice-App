@@ -1,11 +1,20 @@
-<div class="container justify-content-center mb-5 p-0" id="customerListContainer">
-    <h2>Customer list</h2>
-    <ul class="list-group mb-5" id="customerList">
-        <app-customer-list-element
-        *ngFor="let customer of customerList"
-        [customer]="customer"
-        (deletedCustomerEvent)="onDeletedCustomer($event)"
-        ></app-customer-list-element>
-    </ul>
-    <button type="button" class="btn btn-primary" routerLink="/invoice/customer/form/">Add new customer</button>
+<div
+  class="container justify-content-center mb-5 p-0"
+  id="customerListContainer"
+>
+  <h2>Customer list</h2>
+  <ul class="list-group mb-5" id="customerList">
+    <app-customer-list-element
+      *ngFor="let customer of customerList"
+      [customer]="customer"
+      (deletedCustomerEvent)="onDeletedCustomer($event)"
+    ></app-customer-list-element>
+  </ul>
+  <button
+    type="button"
+    class="btn btn-primary"
+    routerLink="/invoice/customer/form/"
+  >
+    Add new customer
+  </button>
 </div>
